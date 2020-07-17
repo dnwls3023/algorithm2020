@@ -1,0 +1,8 @@
+
+*** debug ***
+
+for(int i= 0;i<n;i++){
+    for(int j = 0;j<t[i].vec.size();j++){
+        cout<< t[i].vec[j].data;
+    }
+}
