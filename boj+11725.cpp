@@ -24,6 +24,12 @@ void bfs(Tree* t){
     }
 }
 
+void traversal(Tree* t){
+    if()
+    cout<<t->data<<"\n";
+    traversal(t->vec);
+}
+
 int main(void){
     cin>>n;
 
@@ -49,14 +55,7 @@ int main(void){
 
     }
 
-    for(int i= 0;i<n-1;i++){
-        cout<<t[i].vec.size()<<"\n";
-        for(int j = 0;j<t[i].vec.size();j++){
-            cout<< t[i].vec[j].data<<" ";
-        }
-        cout<<"\n";
-    }
-    
+
 
     return 0;
 }
