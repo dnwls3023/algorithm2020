@@ -1,7 +1,24 @@
 #include <iostream>
 using namespace std;
-// 아직 안품
-// 미리 생각을 해보자면 범위가 500이기 때문에 MOD 연산을 해야할 것 같다.
+
+int n;
+int cnt; 
+
 int main(void){
+    cin>>n;
+    int tmp = 0;
+    for(int i= 1;i<=n;i++){
+        tmp = i;
+        while(tmp != 0){
+            if(tmp%5 == 0){
+                cnt++;
+                tmp /=5;
+            }
+            else{
+                break;
+            }
+        }
+    }
+    cout<<cnt<<"\n";
     return 0;
 }
