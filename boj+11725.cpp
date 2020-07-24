@@ -1,61 +1,41 @@
 #include <iostream>
 #include <vector>
-#include <queue>
-#include <map>
 #define MAX 100001
-using namespace std;
-
-typedef struct tree{
-    vector<struct tree> vec;
-    int data;
-}Tree;
+using namespace std; 
 
 int n;
-map<int,int> m;
-pair<int,int> arr[MAX];
-bool flag[MAX];
+int first, second;
+bool visited[MAX];
+vector<int> tree[MAX];
+int parent[MAX];
 
-void bfs(Tree* t){ 
-    queue<int> q;
-    q.push(t[0].data);
+void dfs(int node){
+    visited[node] = true;
 
-    while(!q.empty()){
-        
+    for(int i= 0;i<tree[node].size();i++){
+        int next = tree[node][i];
+        if(!visited[next]){
+            parent[next] = node;
+            // debug : cout<<"node : "<<node <<" next : "<<next<<"\n";
+            dfs(next);
+        }
     }
-}
-
-void traversal(Tree* t){
-    if()
-    cout<<t->data<<"\n";
-    traversal(t->vec);
 }
 
 int main(void){
     cin>>n;
 
-    Tree* t =new Tree[n];
 
-    for(int i= 0;i<n;i++){
-        t[i].data = i+1;
+    for(int i = 0 ;i<n-1;i++){
+        cin>>first >> second;
+        tree[first].push_back(second);
+        tree[second].push_back(first);
     }
 
-    for(int i= 0;i<n-1;i++){
-        cin>>arr[i].first>>arr[i].second;
+    dfs(1);
 
-        arr[i].first--; arr[i].second--;
+    for(int i= 2;i<=n;i++){
+        cout<<parent[i]<<"\n";
     }
-
-    flag[0] = true;
-    for(int i= 0;i<n-1;i++){
-        if(!flag[arr[i].first])
-            swap(arr[i].first, arr[i].second);
-
-        t[arr[i].first].vec.push_back(t[arr[i].second]);
-        flag[arr[i].first] = true; flag[arr[i].second] = true;
-
-    }
-
-
-
     return 0;
 }
